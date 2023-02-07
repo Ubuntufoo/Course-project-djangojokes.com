@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     # Local apps
     'livereload',
     'common.apps.CommonConfig',
+    'jobs.apps.JobsConfig',
     'jokes.apps.JokesConfig',
     'pages.apps.PagesConfig',
     'users.apps.UsersConfig',

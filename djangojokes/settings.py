@@ -39,8 +39,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    # Local apps
+    # Third-party
+    'crispy_forms',
     'livereload',
+
+    # Local apps
     'common.apps.CommonConfig',
     'jobs.apps.JobsConfig',
     'jokes.apps.JokesConfig',
@@ -48,6 +51,8 @@ INSTALLED_APPS = [
     'users.apps.UsersConfig',
 
 ]
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

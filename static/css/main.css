@@ -3,13 +3,24 @@ body {
 }
 
 footer {
-  border-top: 1px solid darkgreen;
+  border-top: 10px solid darkgreen;
 }
 
 header {
-  border-bottom: 1px solid darkgreen;
+  border-bottom: 10px solid darkgreen;
 }
 
 h2 {
   font-style: italic;
+}
+
+/* FORM STYLES */
+label {
+  font-variant: small-caps;
+}
+
+.form-check {
+  display: inline-block;
+  font-weight: normal;
+  margin: 0 1rem;
 }

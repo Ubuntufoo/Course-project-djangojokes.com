@@ -33,19 +33,31 @@
           <li class="nav-item">
             <a class="nav-link" href="{% url 'jokes:list' %}">Jokes</a>
           </li>
+          {% if not user.is_authenticated %}
           <li class="nav-item">
-            <a class="nav-link" href="#">Log in</a>
+            <a class="nav-link" href="{% url 'account_login' %}">Log in</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'account_signup' %}">Sign up</a>
+          </li>
+        {% else %}
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
-              aria-haspopup="true" aria-expanded="false">Me</a>
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" 
+              role="button" data-toggle="dropdown" aria-haspopup="true"
+              aria-expanded="false">
+              Me
+            </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
               <a class="dropdown-item" href="#">My Account</a>
               <a class="dropdown-item" href="#">My Django Jokes</a>
               <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="#">Log out</a>
+              <form method="post" action="{% url 'account_logout' %}">
+                {% csrf_token %}
+                <button class="btn dropdown-item">Log out</button>
+              </form>
             </div>
           </li>
+        {% endif %}
         </ul>
         <form class="d-flex role=" search">
           <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
@@ -69,6 +81,11 @@
           <li class="nav-item">
             <a class="nav-link" href="#">Contact</a>
           </li>
+          {% if user.is_staff %}
+            <li class="nav-item">
+              <a class="nav-link" href="/admin/">Admin</a>
+            </li>
+          {% endif %}
         </ul>
       </nav>
       <div class="float-right m-1 mr-2">Copyright &copy; 2020 Django Jokes.</div>

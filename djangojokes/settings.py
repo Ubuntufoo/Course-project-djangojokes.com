@@ -142,11 +142,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
-
-# AUTHENTICATION SETTINGS
-AUTH_USER_MODEL = 'users.CustomUser'
-
 # AUTHENTICATION SETTINGS
 AUTH_USER_MODEL = 'users.CustomUser'
 LOGIN_URL = 'account_login'

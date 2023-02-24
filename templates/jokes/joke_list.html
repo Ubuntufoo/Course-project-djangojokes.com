@@ -28,12 +28,16 @@
               {% endfor %}
             </td>
             <td>
-              <a href="{% url 'jokes:update' joke.slug %}">
-                <i class="fas fa-pencil-alt"></i>
-              </a>
-              <a href="{% url 'jokes:delete' joke.slug %}">
-                <i class="far fa-trash-alt"></i>
-              </a>
+              {% if joke.user == user %}
+                <a href="{% url 'jokes:update' joke.slug %}">
+                  <i class="fas fa-pencil-alt"></i>
+                </a>
+                <a href="{% url 'jokes:delete' joke.slug %}">
+                  <i class="far fa-trash-alt"></i>
+                </a>
+              {% else %}
+                <small>by {{ joke.user.username }}</small>
+              {% endif %}
             </td>
           </tr>
         {% endfor %}

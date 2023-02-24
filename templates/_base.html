@@ -27,24 +27,31 @@
         <li class="nav-item">
           <a class="nav-link" href="{% url 'jokes:list' %}">Jokes</a>
         </li>
+        {% if not user.is_authenticated %}
         <li class="nav-item">
-          <a class="nav-link" href="#">Log in</a>
+          <a class="nav-link" href="{% url 'account_login' %}">Log in</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'account_signup' %}">Sign up</a>
+        </li>
+      {% else %}
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" 
-             role="button" data-toggle="dropdown" aria-haspopup="true"
-             aria-expanded="false">
+            role="button" data-toggle="dropdown" aria-haspopup="true"
+            aria-expanded="false">
             Me
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="{% url 'my-account' %}">
-              My Account
-            </a>
+            <a class="dropdown-item" href="#">My Account</a>
             <a class="dropdown-item" href="#">My Django Jokes</a>
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#">Log out</a>
+            <form method="post" action="{% url 'account_logout' %}">
+              {% csrf_token %}
+              <button class="btn dropdown-item">Log out</button>
+            </form>
           </div>
         </li>
+      {% endif %}
       </ul>
       <form class="form-inline my-2 my-lg-0">
         <input class="form-control mr-sm-2" type="search"
